@@ -6,9 +6,9 @@ import './SesionUsuario.css';
 
 const ModalCrear = () => {
 
-    const { id } = useContext(UsuariosContext);
+    const { idP } = useContext(UsuariosContext);
 
-    let URL = `http://localhost:3000/perfil/${id}/publicaciones`;
+    let URL = `http://localhost:3000/perfil/${idP}/publicaciones`;
 
     const [imagen, setImagen] = useState();
     const [descripcion, setDescripcion] = useState("");
@@ -44,7 +44,6 @@ const ModalCrear = () => {
                 window.location.href = '/perfil'
             });
         } catch (error) {
-            console.log(error);
 
             // Agrega una notificación de error
             Swal.fire({

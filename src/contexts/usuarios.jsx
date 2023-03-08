@@ -7,11 +7,12 @@ export const UsuariosContext = createContext();
 
 export const UsuariosContextProvider = (props) => {
 
-    const [id, setId] = useState("");
+    const [idP, setId] = useState("");
     const [usuario, setUsuario] = useState("");
     const [correo, setCorreo] = useState("");
 
-    const URL = "http://localhost:3000/profile"
+
+    const URL = "http://localhost:3000/profile";
 
     const validacionSesion = async()=>{
         const JWT = localStorage.getItem("JWT");
@@ -21,7 +22,7 @@ export const UsuariosContextProvider = (props) => {
               title: 'Sesión cerrada',
               text: 'Tu sesión ha sido cerrada exitosamente',
               showConfirmButton: false,
-              timer: 2000
+              timer: 1200
             }).then(() => {
               window.location.href = '/';
             });
@@ -37,13 +38,12 @@ export const UsuariosContextProvider = (props) => {
           setCorreo(response.data.correo);
         } catch (error) {
           if(error.response.status === 401){
-            // Muestra la alerta de éxito
             Swal.fire({
                 icon: 'error',
                 title: '¡Ups!',
                 text: 'Necesitas Iniciar sesión!',
                 showConfirmButton: false,
-                timer: 1500}).then(()=>{
+                timer: 1200}).then(()=>{
                     window.location.href = '/404'
             });
           }
@@ -72,10 +72,10 @@ export const UsuariosContextProvider = (props) => {
                 });
             }
           })
-      };   
+      };
 
     return (
-        <UsuariosContext.Provider value={{ id, usuario, correo, validacionSesion, cerrarSesion}}>
+        <UsuariosContext.Provider value={{ idP, usuario, correo, validacionSesion, cerrarSesion }}>
             {props.children}
         </UsuariosContext.Provider>
     );

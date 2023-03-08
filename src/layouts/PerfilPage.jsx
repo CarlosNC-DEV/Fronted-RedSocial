@@ -11,7 +11,7 @@ const PerfilPage = () => {
 
     const [publicaciones, setPublicaciones] = useState([]);
     
-    const { usuario, correo, validacionSesion } = useContext(UsuariosContext);
+    const { validacionSesion } = useContext(UsuariosContext);
 
     useEffect(()=>{
         validacionSesion();
@@ -42,12 +42,6 @@ const PerfilPage = () => {
                 </div>
                 </div>
             ))}
-            </div>
-
-
-            <div>
-                <h1>{usuario}</h1>
-                <p>{correo}</p>
             </div>
             <ModalCrear></ModalCrear>
         </div>
